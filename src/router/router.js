@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 
-import Contacts from '../components/contacts';
-import NewContact from '../components/newContact';
+import Contacts from '../components/organisms/contacts';
+import NewContact from '../components/organisms/newContact';
 
 export default (
     <Router history={browserHistory}>

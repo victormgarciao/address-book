@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class NewContact extends Component {
     render () {
         return(
-            <div>
-                Hello I am NewContact.
-            </div>
+            <Link to="/">Go to contacts</Link>
         )
     }
 }

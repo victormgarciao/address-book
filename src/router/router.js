@@ -1,12 +1,12 @@
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 
-import Contacts from '../components/organisms/contacts';
-import NewContact from '../components/organisms/newContact';
+import ContactsContainer from '../containers/organisms/contacts';
+import NewContactContainer from '../containers/organisms/newContact';
 
 export default (
     <Router history={browserHistory}>
-        <Route path='/' component={Contacts} />
-        <Route path='/newContact' component={NewContact} />
+        <Route path='/' component={ContactsContainer} />
+        <Route path='/newContact' component={NewContactContainer} />
     </Router>
 );

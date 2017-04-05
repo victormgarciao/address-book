@@ -1,28 +1,50 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-class Contacts extends Component {
+const displayName = 'Contacts'
 
-    createListItem = (contact) => {
-         return (
-            <li key={contact.id}>
-                <Link to={`/contacts/${contact.id}`}>
-                    {contact.name}
-                </Link>
-            </li>
-        );
-    }
+const Contacts = (props) => {
+    const {
+        contacts,
+        deleteContact,
+    } = props;
 
-    render () {
-        return(
-            <div>
-                <ul className='contactList'>
-                    {this.props.contacts.map(this.createListItem)}
-                </ul>
-                <Link to='/NewContact'>Go to NewContact</Link>
-            </div>
-        )
-    }
+    return (
+        <ul className={displayName}>
+            {contacts.map((contact) => {
+
+                return (
+                    <li
+                        key={contact.id}
+                        className={`${displayName}__listItem`}
+                    >
+                        <Link to={`/contacts/${contact.id}`}>
+                            {contact.firstname}
+                        </Link>
+                        <div className={`${displayName}__controls`}>
+                            <button
+                                onClick={
+                                    deleteContact.bind(null, contact.id)
+                                }
+                                className={`${displayName}__delete`}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </li>
+                );
+            })}
+        </ul>
+    );
+}
+
+
+Contacts.defaultProps = {
+    contacts: []
+}
+Contacts.propTypes = {
+    contacts: PropTypes.array.isRequired,
+    deleteContact: PropTypes.func.isRequired,
 }
 
 export default Contacts;

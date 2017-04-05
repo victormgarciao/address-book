@@ -1,25 +1,43 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Contacts from '../../../components/organisms/contacts';
+import {
+    getContacts,
+    deleteContact,
+} from '../../../api/contacts-api';
+//TODO
+//import store from '../../../store/store';
+// import { loadSearchLayout } from '../../actions/search-layout-actions';
 
 class ContactsContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            contacts: [
-                {id:1, name:'Ryan', active:true},
-                {id:2, name:'Michael', active:true},
-                {id:3, name:'Dan', active:true},
-            ]
-        };
+
+
+    componentDidMount = () =>{
+        getContacts();
+        // TODO
+        // store.dispatch(
+        //     store.dispatch(loadSearchLayout('contacts', 'Contact Results'));
+        // )
     }
 
-    render () {
+    render() {
+        const {
+            contacts,
+        } = this.props;
+
         return(
             <Contacts 
-                contacts={this.state.contacts}
+                contacts={contacts}
+                deleteContact={deleteContact}
             />
-        )
+        );
     }
 }
 
-export default ContactsContainer;
+const mapStateToProps = (store) => {
+    return {
+        contacts: store.contactState.contacts
+    }
+}
+
+export default connect(mapStateToProps)(ContactsContainer);

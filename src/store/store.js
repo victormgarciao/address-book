@@ -8,9 +8,7 @@ const store = createStore(reducers, persistedState);
 
 store.subscribe(
     throttle(() => {
-        saveState({
-            contacts: store.getState().contacts
-        });
+        saveState(store.getState());
     }, 1000)
 );
 

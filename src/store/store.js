@@ -1,5 +1,14 @@
-import { createStore } from 'redux';
+import { compose, createStore } from 'redux';
+import persistState from 'redux-localstorage';
 import reducers from '../reducers';
 
-const store = createStore(reducers);
+const enhancer = compose(
+    persistState(),
+)
+
+const initialState = {
+    contactState: {}
+}
+
+const store = createStore(reducers, initialState, enhancer);
 export default store;

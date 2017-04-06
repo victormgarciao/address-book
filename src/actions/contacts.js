@@ -4,10 +4,9 @@ export const actionsTypes = {
     CONTACT_PROFILE_SUCCESS : 'CONTACT_PROFILE_SUCCESS'
 }
 
-export const getContactsSuccess = (contacts) => {
+export const getContactsSuccess = () => {
     return {
-        type: actionsTypes.GET_CONTACTS_SUCCESS,
-        contacts
+        type: actionsTypes.GET_CONTACTS_SUCCESS
     };
 }
 

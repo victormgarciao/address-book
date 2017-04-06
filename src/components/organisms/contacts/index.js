@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 const displayName = 'Contacts'
 
 const Contacts = (props) => {
+    debugger;
     const {
         contacts,
         deleteContact,

@@ -1,25 +1,26 @@
 export const actionsTypes = {
-    GET_CONTACTS_SUCCESS : 'GET_CONTACTS_SUCCESS',
-    DELETE_CONTACT_SUCCESS : 'DELETE_CONTACT_SUCCESS',
-    CONTACT_PROFILE_SUCCESS : 'CONTACT_PROFILE_SUCCESS'
+    ADD_CONTACTS : 'ADD_CONTACTS',
+    DELETE_CONTACT : 'DELETE_CONTACT',
+    CONTACT_PROFILE : 'CONTACT_PROFILE'
 }
 
-export const getContactsSuccess = () => {
+export const a_addContact = (contact) => {
     return {
-        type: actionsTypes.GET_CONTACTS_SUCCESS
-    };
+        type: actionsTypes.ADD_CONTACT,
+        contact
+    }
 }
 
-export const deleteContactSuccess = (contactId) => {
+export const a_deleteContact = (contactId) => {
     return {
-        type: actionsTypes.DELETE_CONTACT_SUCCESS,
+        type: actionsTypes.DELETE_CONTACT,
         contactId
     }
 }
 
-export const contactProfileSuccess = (contactId) => {
+export const a_contactProfile = (contactId) => {
     return {
-        type: actionsTypes.CONTACT_PROFILE_SUCCESS,
+        type: actionsTypes.CONTACT_PROFILE,
         contactId
     }
 }

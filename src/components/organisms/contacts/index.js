@@ -11,34 +11,38 @@ const Contacts = (props) => {
     } = props;
 
     return (
-        <ul className={displayName}>
-            {contacts.map((contact) => {
+        <div  className={displayName}> 
+            <ul className={`${displayName}__list`}>
+                {contacts.map((contact) => {
 
-                return (
-                    <li
-                        key={contact.id}
-                        className={`${displayName}__listItem`}
-                    >
-                        <Link to={`/contacts/${contact.id}`}>
-                            {contact.firstname}
-                        </Link>
-                        <div className={`${displayName}__controls`}>
-                            <button
-                                onClick={
-                                    () => deleteContact(contact.id)
-                                }
-                                className={`${displayName}__delete`}
-                            >
-                                Delete
-                            </button>
-                        </div>
-                    </li>
-                );
-            })}
-        </ul>
+                    return (
+                        <li
+                            key={contact.id}
+                            className={`${displayName}__listItem`}
+                        >
+                            <Link to={`/contacts/${contact.id}`}>
+                                {contact.firstname}
+                            </Link>
+                            <div className={`${displayName}__controls`}>
+                                <button
+                                    onClick={
+                                        () => deleteContact(contact.id)
+                                    }
+                                    className={`${displayName}__delete`}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        </li>
+                    );
+                })}
+            </ul>
+            <Link to={'/newContact'}>
+                Add Contact
+            </Link>
+        </div>
     );
 }
-
 
 Contacts.defaultProps = {
     contacts: []

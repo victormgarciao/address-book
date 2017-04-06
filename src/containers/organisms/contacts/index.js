@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Contacts from '../../../components/organisms/contacts';
-import { deleteContactSuccess} from '../../../actions/contacts';
+import { a_deleteContact} from '../../../actions/contacts';
 // TODO
 // import { loadSearchLayout } from '../../actions/search-layout-actions';
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({ 
-    deleteContact: bindActionCreators(deleteContactSuccess, dispatch),
+    deleteContact: bindActionCreators(a_deleteContact, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contacts);

@@ -1,16 +1,14 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Contacts from '../../../components/organisms/contacts';
-import { deleteContactSuccess} from '../../../actions/contacts';
-// TODO
-// import { loadSearchLayout } from '../../actions/search-layout-actions';
+import NewContact from '../../../components/organisms/newContact';
+import { a_addContact } from '../../../actions/contacts';
 
 const mapStateToProps = (state) => ({
     // contacts: state.contactState.contacts,
 })
 
 const mapDispatchToProps = (dispatch) => ({ 
-    // deleteContact: bindActionCreators(deleteContactSuccess, dispatch),
+    addContact: bindActionCreators(a_addContact, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Contacts);
+export default connect(mapStateToProps, mapDispatchToProps)(NewContact);

@@ -1,35 +1,48 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import { Control, Form } from 'react-redux-form';
 
 const displayName = 'NewContact';
 
-class NewContact extends Component {
-    render () {
-        return(
-            <Link to="/">Go to contacts</Link>
+const NewContact = (props) => {
+    const {
+        addContact
+    } = props;
 
-            // INPUT NAME
-            // INPUT LNAME
-            // INPUT EMAIL
-            // SELECT COUNTRY
-            // BUTTON ADD CONTACT
-            <div className={`${displayName}__controls`}>
-                <button
-                    onClick={
-                        () => addContact(contact)
-                    }
-                    className={`${displayName}__add`}
-                >
-                    Add Contact
+    return(
+        <div className={displayName}>
+            <Form 
+                model='contact'
+                onSubmit={(contact) => addContact(contact)}
+            >
+                <label>First Name:</label>
+                <Control.text model='contact.firstname' />
+
+                <label>Last Name:</label>
+                <Control.text model='contact.lastname' />
+
+                <label>Email:</label>
+                <Control.text
+                    type='email'
+                    model='contact.email' 
+                />
+                
+                <label>Country:</label>
+                <Control.text model='contact.country' />
+
+                <button type='submit'>
+                    Add contact
                 </button>
-            </div>
-        )
-    }
+            </Form>
+            <Link to='/'>Go to contacts</Link>
+        </div>
+    )
 }
 
 NewContact.defaultProps = {
 }
 NewContact.propTypes = {
+    contact: PropTypes.object,
     addContact: PropTypes.func.isRequired
 }
 

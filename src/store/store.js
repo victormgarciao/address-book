@@ -3,8 +3,6 @@ import reducers from '../reducers';
 import { loadState, saveState } from '../storage/localstorage';
 import throttle from 'lodash/throttle';
 
-// TODO: remove the localstorage.clear
-localStorage.clear();
 const persistedState = loadState();
 const store = createStore(reducers, persistedState);
 

@@ -1,24 +1,23 @@
 import { actionsTypes } from '../actions/contacts';
 import filter from 'lodash/filter';
+import uniqid from 'uniqid';
+import concat from 'lodash/concat';
 
 const initialState = {
-    contacts: [
-        {
-            id: 1,
-            firstname: 'Victor',
-            lastname: 'Garcia',
-            email: 'hola@hola.com',
-            country: 'Spain'
-        }
-    ],
+    contacts: [],
 }
 
 const contactReducer = (state = initialState, action) => {
-
+    let newContacts = [];
     switch(action.type) {
 
+        case actionsTypes.ADD_CONTACT:
+            const newContact = {...action.contact, id: uniqid()}
+            newContacts = concat(state.contacts, newContact);
+            return {...state, contacts: newContacts};
+
         case actionsTypes.DELETE_CONTACT_SUCCESS:
-            const newContacts = filter(state.contacts, contact => {
+            newContacts = filter(state.contacts, contact => {
                 return contact.id !== action.contactId
             });
             return {...state, contacts: newContacts};

@@ -11,9 +11,6 @@ const initialState = {
             country: 'Spain'
         }
     ],
-    contactProfile: {
-        repos: []
-    }
 }
 
 const contactReducer = (state = initialState, action) => {
@@ -26,11 +23,7 @@ const contactReducer = (state = initialState, action) => {
             });
             return {...state, contacts: newContacts};
         
-        case actionsTypes.CONTACT_PROFILE_SUCCESS:
-            return {...state, contactProfile: action.contactProfile};
-        
         default:
-        debugger;
             return state;
     }
 }

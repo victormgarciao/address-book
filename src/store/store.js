@@ -1,14 +1,19 @@
-import { compose, createStore } from 'redux';
-import persistState from 'redux-localstorage';
+import { createStore } from 'redux';
 import reducers from '../reducers';
+import { loadState, saveState } from '../storage/localstorage';
+import throttle from 'lodash/throttle';
 
-const enhancer = compose(
-    persistState(),
-)
+// TODO: remove the localstorage.clear
+localStorage.clear();
+const persistedState = loadState();
+const store = createStore(reducers, persistedState);
 
-const initialState = {
-    contactState: {}
-}
+store.subscribe(
+    throttle(() => {
+        saveState({
+            contacts: store.getState().contacts
+        });
+    }, 1000)
+);
 
-const store = createStore(reducers, initialState, enhancer);
 export default store;

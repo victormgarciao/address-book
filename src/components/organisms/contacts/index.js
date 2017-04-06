@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const displayName = 'Contacts'
 
 const Contacts = (props) => {
-    debugger;
+    
     const {
         contacts,
         deleteContact,
@@ -25,7 +25,7 @@ const Contacts = (props) => {
                         <div className={`${displayName}__controls`}>
                             <button
                                 onClick={
-                                    deleteContact.bind(null, contact.id)
+                                    () => deleteContact(contact.id)
                                 }
                                 className={`${displayName}__delete`}
                             >

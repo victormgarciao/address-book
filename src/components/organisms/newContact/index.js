@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Control, Form } from 'react-redux-form';
+import { Control, Form, Field } from 'react-redux-form';
+import { countries } from '../../../api/coutries';
 
 const displayName = 'NewContact';
 
@@ -16,10 +17,10 @@ const NewContact = (props) => {
                 onSubmit={(contact) => addContact(contact)}
             >
                 <label>First Name:</label>
-                <Control.text model='.firstname' />
+                <Control.text model='.firstname'/>
 
                 <label>Last Name:</label>
-                <Control.text model='.lastname' />
+                <Control.text model='.lastname'/>
 
                 <label>Email:</label>
                 <Control.text
@@ -28,7 +29,20 @@ const NewContact = (props) => {
                 />
                 
                 <label>Country:</label>
-                <Control.text model='.country' />
+                <Field model='.country'>
+                    <select>
+                        {countries.map((country) => {
+                            return(
+                                <option 
+                                    value={country}
+                                    key={country}
+                                >
+                                    {country}
+                                </option>
+                            );
+                        })}
+                    </select>
+                </Field>
 
                 <button type='submit'>
                     Add contact

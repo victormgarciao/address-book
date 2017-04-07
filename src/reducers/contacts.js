@@ -2,6 +2,7 @@ import { actionsTypes } from '../actions/contacts';
 import filter from 'lodash/filter';
 import uniqid from 'uniqid';
 import concat from 'lodash/concat';
+import map from 'lodash/map';
 
 const initialState = {
     contacts: [],
@@ -20,6 +21,21 @@ const contactReducer = (state = initialState, action) => {
             newContacts = filter(state.contacts, contact => {
                 return contact.id !== action.contactId
             });
+            return {...state, contacts: newContacts};
+        
+        case actionsTypes.UPDATE_CONTACT:
+            newContacts = map(state.contacts, contact => {
+                if(contact.id !== action.contactId){
+                    return contact;
+                }
+                
+                return {
+                    contact,
+                    ...{id: action.contactId},
+                    ...action.contactUpdated
+                };
+            });
+
             return {...state, contacts: newContacts};
         
         default:

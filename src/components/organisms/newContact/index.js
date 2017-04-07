@@ -16,19 +16,19 @@ const NewContact = (props) => {
                 onSubmit={(contact) => addContact(contact)}
             >
                 <label>First Name:</label>
-                <Control.text model='contact.firstname' />
+                <Control.text model='.firstname' />
 
                 <label>Last Name:</label>
-                <Control.text model='contact.lastname' />
+                <Control.text model='.lastname' />
 
                 <label>Email:</label>
                 <Control.text
                     type='email'
-                    model='contact.email' 
+                    model='.email' 
                 />
                 
                 <label>Country:</label>
-                <Control.text model='contact.country' />
+                <Control.text model='.country' />
 
                 <button type='submit'>
                     Add contact

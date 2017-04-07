@@ -1,7 +1,7 @@
 export const actionsTypes = {
     ADD_CONTACT : 'ADD_CONTACT',
     DELETE_CONTACT : 'DELETE_CONTACT',
-    CONTACT_PROFILE : 'CONTACT_PROFILE'
+    UPDATE_CONTACT : 'UPDATE_CONTACT'
 }
 
 export const a_addContact = (contact) => {
@@ -18,9 +18,10 @@ export const a_deleteContact = (contactId) => {
     }
 }
 
-export const a_contactProfile = (contactId) => {
+export const a_updateContact = (contactId, contactUpdated) => {
     return {
-        type: actionsTypes.CONTACT_PROFILE,
-        contactId
+        type: actionsTypes.UPDATE_CONTACT,
+        contactId,
+        contactUpdated
     }
 }

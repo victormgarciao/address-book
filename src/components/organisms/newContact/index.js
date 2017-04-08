@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Control, Form, Field, Errors } from 'react-redux-form';
-import { countries } from '../../../api/coutries';
 import { browserHistory } from 'react-router';
+import SelectForm from '../../molecules/SelectForm';
+import FormInput from '../../molecules/FormImput';
+import Form from '../../molecules/Form';
 import validator from 'validator';
+import { countries } from '../../../api/coutries';
 
 const displayName = 'NewContact';
 
@@ -14,92 +16,62 @@ const NewContact = (props) => {
 
     return(
         <div className={displayName}>
-            <Form 
-                model='contact'
+            <Form
+                model={'contact'}
                 onSubmit={(contact) => {
                     addContact(contact);
                     browserHistory.push('/')
                 }}
-                
             >
-                <label>First Name:</label>
-                <Control.text 
-                    model='.firstname'
+                <FormInput 
+                    label={'First Name'}
+                    model={'.firstname'}
                     validators={{
                         required: (val) => !validator.isEmpty(val)
                     }}
-                />
-                <Errors
-                    model=".firstname"
-                    messages={{
+                    errorMessages={{
                         required: 'Please provide an first name.',
                     }}
                     show={(field) => field.touched && !field.focus}
                 />
 
-                <label>Last Name:</label>
-                <Control.text 
-                    model='.lastname'
+                <FormInput 
+                    label={'Last Name'}
+                    model={'.lastname'}
                     validators={{
                         required: (val) => !validator.isEmpty(val)
                     }}
-                />
-                <Errors
-                    model=".lastname"
-                    messages={{
+                    errorMessages={{
                         required: 'Please provide an lastname.',
                     }}
                     show={(field) => field.touched && !field.focus}
                 />
 
-                <label>Email:</label>
-                <Control.text
-                    type='email'
-                    model='.email'
+                <FormInput 
+                    label={'Email'}
+                    model={'.email'}
                     validators={{
                         required: (val) => !validator.isEmpty(val),
-                        valid: (val) => (
-                            validator.isEmail(
-                                val,
-                                {require_display_name: false}
-                        ))
+                        valid: (val) => validator.isEmail(val)
                     }}
-                />
-                <Errors
-                    model=".email"
-                    messages={{
+                    errorMessages={{
                         required: 'Please provide an email.',
                         valid: 'It is not a valid email'
                     }}
                     show={(field) => field.touched && !field.focus}
                 />
                 
-                <label>Country:</label>
-                <Field 
-                    model='.country'
+                <SelectForm
+                    label={'Country'}
+                    model={'.country'}
                     validators={{
-                        required: (val) => !validator.isEmpty(val)
+                        required: (val) => !validator.isEmpty(val),
                     }}
-                >
-                    <select>
-                        {countries.map((country) => {
-                            return(
-                                <option 
-                                    value={country}
-                                    key={country}
-                                >
-                                    {country}
-                                </option>
-                            );
-                        })}
-                    </select>
-                </Field>
-                <Errors
-                    model=".country"
-                    messages={{
-                        required: 'Please select a country.',
+                    errorMessages={{
+                       required: 'Please select a country.',
                     }}
                     show={(field) => field.touched && !field.focus}
+                    options={countries}
                 />
 
                 <button type='submit'>

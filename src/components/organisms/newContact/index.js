@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Control, Form, Field } from 'react-redux-form';
+import { Control, Form, Field, Errors } from 'react-redux-form';
 import { countries } from '../../../api/coutries';
 import { browserHistory } from 'react-router';
+import validator from 'validator';
 
 const displayName = 'NewContact';
 
@@ -22,19 +23,64 @@ const NewContact = (props) => {
                 
             >
                 <label>First Name:</label>
-                <Control.text model='.firstname'/>
+                <Control.text 
+                    model='.firstname'
+                    validators={{
+                        required: (val) => !validator.isEmpty(val)
+                    }}
+                />
+                <Errors
+                    model=".firstname"
+                    messages={{
+                        required: 'Please provide an first name.',
+                    }}
+                    show={(field) => field.touched && !field.focus}
+                />
 
                 <label>Last Name:</label>
-                <Control.text model='.lastname'/>
+                <Control.text 
+                    model='.lastname'
+                    validators={{
+                        required: (val) => !validator.isEmpty(val)
+                    }}
+                />
+                <Errors
+                    model=".lastname"
+                    messages={{
+                        required: 'Please provide an lastname.',
+                    }}
+                    show={(field) => field.touched && !field.focus}
+                />
 
                 <label>Email:</label>
                 <Control.text
                     type='email'
-                    model='.email' 
+                    model='.email'
+                    validators={{
+                        required: (val) => !validator.isEmpty(val),
+                        valid: (val) => (
+                            validator.isEmail(
+                                val,
+                                {require_display_name: false}
+                        ))
+                    }}
+                />
+                <Errors
+                    model=".email"
+                    messages={{
+                        required: 'Please provide an email.',
+                        valid: 'It is not a valid email'
+                    }}
+                    show={(field) => field.touched && !field.focus}
                 />
                 
                 <label>Country:</label>
-                <Field model='.country'>
+                <Field 
+                    model='.country'
+                    validators={{
+                        required: (val) => !validator.isEmpty(val)
+                    }}
+                >
                     <select>
                         {countries.map((country) => {
                             return(
@@ -48,6 +94,13 @@ const NewContact = (props) => {
                         })}
                     </select>
                 </Field>
+                <Errors
+                    model=".country"
+                    messages={{
+                        required: 'Please select a country.',
+                    }}
+                    show={(field) => field.touched && !field.focus}
+                />
 
                 <button type='submit'>
                     Add contact

@@ -7,19 +7,12 @@ import { browserHistory } from 'react-router';
 const displayName = 'ContactProfile'
 
 const ContactProfile = (props) => {
-    
+
     const {
         contactId,
-        contact,
         updateContact,
-        initFormField
     } = props;
 
-    initFormField('contact.firstname', contact.firstname);
-    initFormField('contact.lastname', contact.lastname);
-    initFormField('contact.email', contact.email);
-    initFormField('contact.country', contact.country);
-    
     return (
         <div  className={displayName}> 
             <Form 
@@ -77,10 +70,8 @@ const ContactProfile = (props) => {
 ContactProfile.defaultProps = {
 }
 ContactProfile.propTypes = {
-    contact: PropTypes.object.isRequired,
     contactId: PropTypes.string.isRequired,
     updateContact: PropTypes.func.isRequired,
-    initFormField: PropTypes.func.isRequired
 }
 
 export default ContactProfile;

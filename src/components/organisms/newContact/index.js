@@ -8,11 +8,8 @@ const displayName = 'NewContact';
 
 const NewContact = (props) => {
     const {
-        resetFormModel,
         addContact
     } = props;
-
-    resetFormModel('contact');
 
     return(
         <div className={displayName}>
@@ -65,7 +62,6 @@ NewContact.defaultProps = {
 }
 NewContact.propTypes = {
     addContact: PropTypes.func.isRequired,
-    resetFormModel: PropTypes.func.isRequired
 }
 
 export default NewContact;

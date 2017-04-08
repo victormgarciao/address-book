@@ -2,19 +2,27 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Control, Form, Field } from 'react-redux-form';
 import { countries } from '../../../api/coutries';
+import { browserHistory } from 'react-router';
 
 const displayName = 'NewContact';
 
 const NewContact = (props) => {
     const {
+        resetFormModel,
         addContact
     } = props;
+
+    resetFormModel('contact');
 
     return(
         <div className={displayName}>
             <Form 
                 model='contact'
-                onSubmit={(contact) => addContact(contact)}
+                onSubmit={(contact) => {
+                    addContact(contact);
+                    browserHistory.push('/')
+                }}
+                
             >
                 <label>First Name:</label>
                 <Control.text model='.firstname'/>
@@ -56,8 +64,8 @@ const NewContact = (props) => {
 NewContact.defaultProps = {
 }
 NewContact.propTypes = {
-    contact: PropTypes.object,
-    addContact: PropTypes.func.isRequired
+    addContact: PropTypes.func.isRequired,
+    resetFormModel: PropTypes.func.isRequired
 }
 
 export default NewContact;

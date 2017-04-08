@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Control, Form, Field } from 'react-redux-form';
+import { Control, Form, Field, Errors } from 'react-redux-form';
 import { countries } from '../../../api/coutries';
 import { browserHistory } from 'react-router';
+import { isStringRequired } from '../../../schemas/contact.schema';
 
 const displayName = 'ContactProfile'
 
@@ -25,6 +26,22 @@ const ContactProfile = (props) => {
                 <label>First Name:</label>
                 <Control.text 
                     model='.firstname'
+                    validators={{
+                        isRequired: 
+                        (val) => {
+                            return isStringRequired(val)
+                            debugger
+
+                        },
+                        // isEmail, // ES6 property shorthand
+                    }}
+                />
+
+                <Errors
+                    model=".firstname"
+                    messages={{
+                        isRequired: 'Please provide an first name.',
+                    }}
                 />
 
                 <label>Last Name:</label>

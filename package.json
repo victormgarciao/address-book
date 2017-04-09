@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@team-griffin/css-longhand": "^0.1.0",
+    "@team-griffin/css-sides": "^0.1.1",
     "country-list": "^1.1.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

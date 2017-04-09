@@ -7,7 +7,7 @@ import FormInput from '../../molecules/FormImput';
 import Form from '../../molecules/Form';
 import Button, { Kind } from '../../molecules/Button'
 import { countries } from '../../../api/coutries';
-import { theme } from '../../../themes/testTheme'
+import { theme } from '../../../themes/testTheme';
 
 const displayName = 'NewContact';
 

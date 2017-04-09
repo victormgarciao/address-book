@@ -7,7 +7,7 @@ import Form from '../../molecules/Form';
 import Button, { Kind } from '../../molecules/Button'
 import validator from 'validator';
 import { countries } from '../../../api/coutries';
-import { theme } from '../../../themes/testTheme'
+import { theme } from '../../../themes/testTheme';
 
 const displayName = 'ContactProfile'
 

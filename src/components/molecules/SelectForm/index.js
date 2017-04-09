@@ -4,6 +4,7 @@ import longhand from '@team-griffin/css-longhand';
 import cssSides, { Side } from '@team-griffin/css-sides';
 import radium from 'radium';
 import color from 'color';
+import Label from '../../atoms/Label';
 import { themePropType } from '../../../helpers/propTypes';
 import { typography, roundAllBorders } from '../../../helpers/css';
 import { Curvature, Status } from '../../../constants/constants';
@@ -38,18 +39,19 @@ const computeStyles = (props) => {
     root: {
       base:{
         ...typography.input(themeTypography),
-        backgroundColor: '#fff',
-        display: 'block',
-        width: '100%',
-        minHeight: 30,
         ...cssSides('padding', Side.A, 10),
-        color: palette.get('grey05'),
         ...longhand('border', {
           width: 1,
           style: 'solid',
           color: palette.get('grey10'),
         }),
         ...roundAllBorders(0),
+        marginBottom: 20,
+        backgroundColor: '#fff',
+        display: 'block',
+        width: '100%',
+        minHeight: 30,
+        color: palette.get('grey05'),
         transition: `
           color 0.2s ease-in-out,
           box-shadow 0.2s ease-in-out,
@@ -109,12 +111,13 @@ const SelectForm = (props) => {
     errorMessages,
     show,
     options,
-    updateCountry
+    updateCountry,
+    theme
   } = props;
 
   return(
     <div className={displayName}>
-      {label && <label>{label}</label>}
+      {label && <Label theme={theme}>{label}</Label>}
       <Field 
         model={model}
         validators={validators}

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
+import cssSides, { Side } from '@team-griffin/css-sides';
 import SelectForm from '../../molecules/SelectForm';
 import FormInput from '../../molecules/FormImput';
 import Form from '../../molecules/Form';
@@ -19,6 +20,15 @@ const computeStyles = () => {
         width: '30%',
         padding: 20,
         margin: '0 auto'
+      }
+    },
+
+    button: {
+      base: {
+        ...cssSides('padding', Side.X, 10)
+      },
+      first: {
+        paddingLeft: 0
       }
     }
   }
@@ -102,18 +112,26 @@ const ContactProfile = (props) => {
           theme={theme()}
           updateCountry={updateCountry}
         />
-
-        <Button 
-          theme={theme()}
-          type={'submit'}
-          kind={Kind.PRIMARY}
-        >
-          <span>Update contact</span>
-        </Button>
+        <span style={styles.button.first}>
+          <Button 
+            theme={theme()}
+            type={'submit'}
+            kind={Kind.PRIMARY}
+          >
+            <span>Update contact</span>
+          </Button>
+        </span>
+        <span style={styles.button.base}>
+          <Link to={'/'}>
+            <Button 
+              theme={theme()}
+              kind={Kind.PRIMARY}
+            >
+              <span>Contacts</span>
+            </Button>
+          </Link>
+        </span>
       </Form>
-      <Link to={'/'}>
-        'Go back to contacts'
-      </Link>
     </div>
   );
 }

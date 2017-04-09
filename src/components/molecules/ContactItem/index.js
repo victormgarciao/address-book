@@ -42,6 +42,15 @@ const computeStyles = (props) => {
       last: {
         justifyContent: 'flex-end'
       }
+    },
+
+    button: {
+      base: {
+        ...cssSides('padding', Side.X, 10)
+      },
+      last: {
+        paddingRight: 0
+      }
     }
   };
 };
@@ -77,19 +86,23 @@ const ContactsItem = (props) => {
           ...styles.item.last
         }}
       >
-        <Link to={`/contacts/${contact.id}`}>
-          <Button theme={theme} kind={Kind.PRIMARY}>
-            <span>Edit</span>
+        <span style={styles.button.base}>
+          <Link to={`/contacts/${contact.id}`}>
+            <Button theme={theme} kind={Kind.PRIMARY}>
+              <span>Edit</span>
+            </Button>
+          </Link>
+        </span>
+        <span style={styles.button.last}>
+          <Button
+            onClick={() => deleteContact(contact.id)}
+            className={`${displayName}__delete`}
+            theme={theme}
+            kind={Kind.DETRIMENTAL}
+          >
+            <span>Delete</span>
           </Button>
-        </Link>
-        <Button
-          onClick={() => deleteContact(contact.id)}
-          className={`${displayName}__delete`}
-          theme={theme}
-          kind={Kind.DETRIMENTAL}
-        >
-          <span>Delete</span>
-        </Button>
+        </span>
       </span>
     </div>
   );

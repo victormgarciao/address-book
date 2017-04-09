@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import ContactList from '../../molecules/ContactList';
+import Button, { Kind } from '../../molecules/Button';
 import { theme } from '../../../themes/testTheme';
 
 const displayName = 'Contacts'
@@ -27,15 +28,20 @@ const Contacts = (props) => {
       className={displayName}
       style={styles.root.base}
     >
+      <Link to={'/newContact'}>
+        <Button 
+          theme={theme()}
+          kind={Kind.PRIMARY}
+        >
+          <span>Add Contact</span>
+        </Button>
+      </Link>
+
       <ContactList 
         theme={theme()}
         contacts={contacts}
         deleteContact={deleteContact}
       />
-
-      <Link to={'/newContact'}>
-        Add Contact
-      </Link>
     </div>
   );
 }

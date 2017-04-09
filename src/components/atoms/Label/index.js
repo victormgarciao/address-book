@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
-import { FormattedMessage } from 'react-intl';
 import cssSides, { Side } from '@team-griffin/css-sides';
 import longhand from '@team-griffin/css-longhand';
 import omit from 'lodash/omit';
-import px2Em from '../../../helpers/px2Emm';
+import px2Em from '../../../helpers/px2Em';
 import { themePropType } from '../../../helpers/propTypes';
 import { typography, px2EmConfig } from '../../../helpers/css';
 import { TypographyFace } from '../../../constants/constants';

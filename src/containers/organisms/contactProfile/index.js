@@ -39,7 +39,8 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch) => ({ 
     updateContact: bindActionCreators(a_updateContact, dispatch),
-    reduxFormActions: bindActionCreators(actions, dispatch)
+    reduxFormActions: bindActionCreators(actions, dispatch),
+    updateCountry: bindActionCreators(actions.change, dispatch)
 });
 
 export default connect(

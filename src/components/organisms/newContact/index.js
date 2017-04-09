@@ -6,20 +6,36 @@ import SelectForm from '../../molecules/SelectForm';
 import FormInput from '../../molecules/FormImput';
 import Form from '../../molecules/Form';
 import Button, { Kind } from '../../molecules/Button';
+import Input from '../../atoms/Input'
 import { countries } from '../../../api/coutries';
 import { theme } from '../../../themes/testTheme';
-import Input from '../../atoms/Input'
 
 const displayName = 'NewContact';
 
+const computeStyles = () => {
+  return {
+    root: {
+      base: {
+        width: '30%',
+        padding: 20,
+        margin: '0 auto'
+      }
+    }
+  }
+}
+
 const NewContact = (props) => {
+  const styles = computeStyles();
   const {
     addContact,
     updateCountry
   } = props;
 
   return(
-    <div className={displayName}>
+    <div 
+      className={displayName}
+      style={styles.root.base}
+    >
       <Form
         model={'contact'}
         onSubmit={(contact) => {
@@ -81,7 +97,7 @@ const NewContact = (props) => {
             required: 'Please select a country.',
           }}
           show={(field) => field.touched && !field.focus}
-          countries={countries}
+          options={countries}
           theme={theme()}
           updateCountry={updateCountry}
         />

@@ -44,18 +44,19 @@ const computeStyles = (props: Object) => {
     input: {
       base: {
         ...typography.input(themeTypography),
-        backgroundColor: '#fff',
-        display: 'block',
-        width: '100%',
-        minHeight: 30,
         ...cssSides('padding', Side.A, 10),
-        color: palette.get('grey05'),
         ...longhand('border', {
           width: 1,
           style: 'solid',
           color: palette.get('grey10'),
         }),
         ...roundAllBorders(0),
+        backgroundColor: '#fff',
+        display: 'block',
+        boxSizing: 'border-box',
+        width: '100%',
+        minHeight: 30,
+        color: palette.get('grey05'),
         transition: `
           color 0.2s ease-in-out,
           box-shadow 0.2s ease-in-out,

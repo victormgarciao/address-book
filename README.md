@@ -22,7 +22,7 @@ yarn install
 ## File Structure
 
 - node_odules
--- With all the Modules I have used on this project
+** With all the Modules I have used on this project
 - public
 -- With favicon and index.html
 - src

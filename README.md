@@ -29,7 +29,8 @@ yarn start
 yarn test
 ```
 
-## Eject (eject all the 'hide' files such as webpack, label, etc) Note: if you do eject you cannot go back
+## Eject (eject all the 'hide' files such as webpack, label, etc) 
+Note: if you do eject you cannot go back
 ```js
 yarn eject
 ```

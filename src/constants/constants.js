@@ -16,3 +16,10 @@ export const ProductStatus = {
   WARNING: 'WARNING',
   OK: 'OK',
 };
+
+export const Status = {
+  DEFAULT: 'DEFAULT',
+  ERROR: 'ERROR',
+  WARNING: 'WARNING',
+  SUCCESS: 'SUCCESS',
+};

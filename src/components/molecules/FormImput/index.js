@@ -9,7 +9,8 @@ const FormInput = (props) => {
         model,
         validators,
         errorMessages,
-        show
+        show,
+        ...rest
     } = props;
 
     return (
@@ -18,6 +19,7 @@ const FormInput = (props) => {
             <Control.text 
                 model={model}
                 validators={validators}
+                {...rest}
             />
             <Errors
                 model={model}

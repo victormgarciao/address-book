@@ -3,19 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@team-griffin/css-longhand": "^0.1.0",
-    "@team-griffin/css-sides": "^0.1.1",
-    "country-list": "^1.1.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
     "react-redux-form": "^1.9.0",
     "react-router": "^3.0.0",
+    "react-immutable-proptypes": "^2.1.0",
+    "react-select": "^1.0.0-rc.2",
+    "@team-griffin/css-longhand": "^0.1.0",
+    "@team-griffin/css-sides": "^0.1.1",
+    "country-list": "^1.1.0",
+    "color": "^1.0.3",
+    "hex-rgb": "^1.0.0",
+    "svg-inline-react": "^1.0.3",
     "redux": "^3.6.0",
     "radium": "^0.18.2",
     "validator": "^7.0.0",
-    "immutable": "^3.8.1",
-    "react-immutable-proptypes": "^2.1.0"
+    "immutable": "^3.8.1"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"

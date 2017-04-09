@@ -5,15 +5,17 @@ import validator from 'validator';
 import SelectForm from '../../molecules/SelectForm';
 import FormInput from '../../molecules/FormImput';
 import Form from '../../molecules/Form';
-import Button, { Kind } from '../../molecules/Button'
+import Button, { Kind } from '../../molecules/Button';
 import { countries } from '../../../api/coutries';
 import { theme } from '../../../themes/testTheme';
+import Input from '../../atoms/Input'
 
 const displayName = 'NewContact';
 
 const NewContact = (props) => {
   const {
-    addContact
+    addContact,
+    updateCountry
   } = props;
 
   return(
@@ -35,6 +37,8 @@ const NewContact = (props) => {
             required: 'Please provide an first name.',
           }}
           show={(field) => field.touched && !field.focus}
+          component={Input}
+          theme={theme()}
         />
 
         <FormInput 
@@ -47,6 +51,8 @@ const NewContact = (props) => {
             required: 'Please provide an lastname.',
           }}
           show={(field) => field.touched && !field.focus}
+          component={Input}
+          theme={theme()}
         />
 
         <FormInput 
@@ -61,6 +67,8 @@ const NewContact = (props) => {
             valid: 'It is not a valid email'
           }}
           show={(field) => field.touched && !field.focus}
+          component={Input}
+          theme={theme()}
         />
         
         <SelectForm
@@ -73,7 +81,9 @@ const NewContact = (props) => {
             required: 'Please select a country.',
           }}
           show={(field) => field.touched && !field.focus}
-          options={countries}
+          countries={countries}
+          theme={theme()}
+          updateCountry={updateCountry}
         />
 
         <Button 
@@ -93,6 +103,8 @@ NewContact.defaultProps = {
 }
 NewContact.propTypes = {
   addContact: PropTypes.func.isRequired,
+  updateCountry: PropTypes.func.isRequired
+
 }
 
 export default NewContact;

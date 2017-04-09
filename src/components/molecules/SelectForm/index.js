@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
 import { Field, Errors} from 'react-redux-form';
+import Select from '../../atoms/Select';
+import { themePropType } from '../../../helpers/propTypes';
 
 const displayName='SelectForm';
 
@@ -10,8 +12,14 @@ const SelectForm = (props) => {
         validators,
         errorMessages,
         show,
-        options
+        theme,
+        countries,
+        updateCountry
     } = props;
+
+    const options = countries.map((country) => {
+        return {value: country, label: country}
+    })
 
     return(
         <div className={displayName}>
@@ -19,20 +27,14 @@ const SelectForm = (props) => {
             <Field 
                 model={model}
                 validators={validators}
-            >
-                <select>
-                    {options.map((option) => {
-                        return(
-                            <option 
-                                value={option}
-                                key={option}
-                            >
-                                {option}
-                            </option>
-                        );
-                    })}
-                </select>
-            </Field>
+                component={Select}
+                theme={theme}
+                options={options}
+                onChange={(value) => {
+                    updateCountry('contact.country' ,value)}
+                }
+                valueKey={'label'}
+            />
             <Errors
                 model={model}
                 messages={errorMessages}
@@ -50,7 +52,10 @@ SelectForm.propTypes = {
     validators: PropTypes.object,
     errorMessages: PropTypes.object,
     show: PropTypes.func,
-    options: PropTypes.array.isRequired
+    countries: PropTypes.array.isRequired,
+    theme: themePropType(),
+    updateCountry: PropTypes.func.isRequired
+
 }
 
 export default SelectForm;

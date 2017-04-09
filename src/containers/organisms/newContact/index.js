@@ -21,7 +21,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({ 
     addContact: bindActionCreators(a_addContact, dispatch),
-    resetFormModel: bindActionCreators(actions.reset, dispatch)
+    resetFormModel: bindActionCreators(actions.reset, dispatch),
+    updateCountry: bindActionCreators(actions.change, dispatch)
 });
 
 export default connect(

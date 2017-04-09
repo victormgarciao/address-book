@@ -16,7 +16,7 @@ export const Kind = {
   POSITIVE: 'POSITIVE',
 };
 
-class Button extends Component {
+export class Button extends Component {
   static defaultProps = {
     component: 'button',
     type: 'button',
@@ -215,4 +215,5 @@ class Button extends Component {
     ));
   }
 }
+
 export default radium(Button);

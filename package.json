@@ -22,7 +22,11 @@
     "immutable": "^3.8.1"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "chai": "^3.5.0",
+    "enzyme": "^2.8.0",
+    "sinon": "https://github.com/sinonjs/sinon.git#v2.0.0-pre.4",
+    "react-addons-test-utils": "^15.4.2"
   },
   "scripts": {
     "start": "react-scripts start",

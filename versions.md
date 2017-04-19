@@ -1,6 +1,6 @@
 # Versions
 
-## v.0.1
+## v0.1
 
 Changes:
 - src/version.md

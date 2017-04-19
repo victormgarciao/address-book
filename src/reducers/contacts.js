@@ -5,42 +5,43 @@ import concat from 'lodash/concat';
 import map from 'lodash/map';
 
 const initialState = {
-    contacts: [],
+  contacts: [],
 }
 
-const contactReducer = (state = initialState, action) => {
-    let newContacts = [];
-    switch(action.type) {
+const contactsReducer = (state = initialState, action) => {
+  let newContacts = [];
 
-        case actionsTypes.ADD_CONTACT:
-            const newContact = {...action.contact, id: uniqid()}
-            newContacts = concat(state.contacts, newContact);
-            return {...state, contacts: newContacts};
+  switch(action.type) {
 
-        case actionsTypes.DELETE_CONTACT:
-            newContacts = filter(state.contacts, contact => {
-                return contact.id !== action.contactId
-            });
-            return {...state, contacts: newContacts};
+    case actionsTypes.ADD_CONTACT:
+      const newContact = {...action.contact, id: uniqid()}
+      newContacts = concat(state.contacts, newContact);
+      return {...state, contacts: newContacts};
+
+    case actionsTypes.DELETE_CONTACT:
+      newContacts = filter(state.contacts, contact => {
+        return contact.id !== action.contactId
+      });
+      return {...state, contacts: newContacts};
+    
+    case actionsTypes.UPDATE_CONTACT:
+      newContacts = map(state.contacts, contact => {
+        if(contact.id !== action.contactId){
+          return contact;
+        }
         
-        case actionsTypes.UPDATE_CONTACT:
-            newContacts = map(state.contacts, contact => {
-                if(contact.id !== action.contactId){
-                    return contact;
-                }
-                
-                return {
-                    contact,
-                    ...{id: action.contactId},
-                    ...action.contactUpdated
-                };
-            });
+        return {
+          contact,
+          ...{id: action.contactId},
+          ...action.contactUpdated
+        };
+      });
 
-            return {...state, contacts: newContacts};
-        
-        default:
-            return state;
-    }
+      return {...state, contacts: newContacts};
+    
+    default:
+      return state;
+  }
 }
 
-export default contactReducer;
+export default contactsReducer;

@@ -6,44 +6,44 @@ import { a_updateContact } from '../../../actions/contacts';
 import { actions } from 'react-redux-form';
 
 const getContact = (contacts, contactId) => {
-    return contacts.filter(contact => contact.id === contactId)
+  return (contacts.filter(contact => contact.id === contactId))[0];
 };
 
-const initFormFields = (contact, reduxFormActions) => {
-    reduxFormActions.reset('contact');
-    reduxFormActions.change('contact.firstname', contact.firstname);
-    reduxFormActions.change('contact.lastname', contact.lastname);
-    reduxFormActions.change('contact.email', contact.email);
-    reduxFormActions.change('contact.country', contact.country);
+const initContactState = (contact, reduxFormActions) => {
+  reduxFormActions.reset('contactState');
+  reduxFormActions.change('contactState.firstname', contact.firstname);
+  reduxFormActions.change('contactState.lastname', contact.lastname);
+  reduxFormActions.change('contactState.email', contact.email);
+  reduxFormActions.change('contactState.country', contact.country);
+  reduxFormActions.change('contactState.id', contact.id);
 }
 
 const ContactProfileContainer = (props) => {
 
-    const {
-        contact,
-        reduxFormActions
-    } = props;
+  const {
+    contact,
+    reduxFormActions
+  } = props;
 
-    initFormFields(contact, reduxFormActions);
+  initContactState(contact, reduxFormActions);
 
-    return <ContactProfile {...props}/>;
+  return <ContactProfile {...props}/>;
 }
 
 const mapStateToProps = (state, props) => ({
-    contact: getContact(
-        state.contactState.contacts,
-        props.params.contactId
-    )[0],
-    contactId: props.params.contactId,
+  contact: getContact(
+    state.contactsState.contacts,
+    props.params.contactId
+  ),
+  contactId: props.params.contactId,
 })
 
 const mapDispatchToProps = (dispatch) => ({ 
-    updateContact: bindActionCreators(a_updateContact, dispatch),
-    reduxFormActions: bindActionCreators(actions, dispatch),
-    updateCountry: bindActionCreators(actions.change, dispatch)
+  updateContact: bindActionCreators(a_updateContact, dispatch),
+  reduxFormActions: bindActionCreators(actions, dispatch),
 });
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ContactProfileContainer);

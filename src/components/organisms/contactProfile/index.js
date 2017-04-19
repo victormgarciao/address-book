@@ -39,7 +39,6 @@ const ContactProfile = (props) => {
   const {
       contactId,
       updateContact,
-      updateCountry
   } = props;
 
   return (
@@ -48,7 +47,7 @@ const ContactProfile = (props) => {
       style={styles.root.base}
     >
       <Form
-        model='contact'
+        model='contactState'
         onSubmit={(contact) => {
           updateContact(contactId, contact);
           browserHistory.push('/');
@@ -110,8 +109,8 @@ const ContactProfile = (props) => {
           show={(field) => field.touched && !field.focus}
           options={countries}
           theme={theme()}
-          updateCountry={updateCountry}
         />
+        
         <span style={styles.button.first}>
           <Button 
             theme={theme()}
@@ -141,7 +140,6 @@ ContactProfile.defaultProps = {
 ContactProfile.propTypes = {
   contactId: PropTypes.string.isRequired,
   updateContact: PropTypes.func.isRequired,
-  updateCountry: PropTypes.func.isRequired
 }
 
 export default ContactProfile;

@@ -1,24 +1,14 @@
 import { combineReducers } from 'redux';
 import { createForms } from 'react-redux-form';
 
-import contactReducer from './contacts';
-
-const initialContact = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    country: ''
-}
-
-const initialContactState = (state = initialContact) => {
-    return state;
-}
+import contactsReducer from './contacts';
+import contactReducer from './contact';
 
 const reducers = combineReducers({
-    contactState: contactReducer,
-    ...createForms({
-        contact: initialContactState
-    })
+  contactsState: contactsReducer,
+  ...createForms({
+    contactState: contactReducer
+  })
 });
 
 export default reducers;

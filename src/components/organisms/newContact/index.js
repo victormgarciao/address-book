@@ -38,7 +38,6 @@ const NewContact = (props) => {
   const styles = computeStyles();
   const {
     addContact,
-    updateCountry
   } = props;
 
   return(
@@ -47,10 +46,10 @@ const NewContact = (props) => {
       style={styles.root.base}
     >
       <Form
-        model={'contact'}
+        model={'contactState'}
         onSubmit={(contact) => {
-            addContact(contact);
-            browserHistory.push('/')
+          addContact(contact);
+          browserHistory.push('/')
         }}
       >
         <FormInput 
@@ -109,7 +108,6 @@ const NewContact = (props) => {
           show={(field) => field.touched && !field.focus}
           options={countries}
           theme={theme()}
-          updateCountry={updateCountry}
         />
 
         <span style={styles.button.first}>
@@ -140,8 +138,6 @@ NewContact.defaultProps = {
 }
 NewContact.propTypes = {
   addContact: PropTypes.func.isRequired,
-  updateCountry: PropTypes.func.isRequired
-
 }
 
 export default NewContact;

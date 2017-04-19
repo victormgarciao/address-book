@@ -4,7 +4,7 @@ import Contacts from '../../../components/organisms/contacts';
 import { a_deleteContact } from '../../../actions/contacts';
 
 const mapStateToProps = (state) => ({
-    contacts: state.contactState.contacts,
+    contacts: state.contactsState.contacts,
 })
 
 const mapDispatchToProps = (dispatch) => ({ 

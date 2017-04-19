@@ -6,26 +6,24 @@ import { a_addContact } from '../../../actions/contacts';
 import { actions } from 'react-redux-form';
 
 const NewContactContainer = (props) => {
-    const {
-        resetFormModel
-    } = props;
+  const {
+    resetFormModel
+  } = props;
 
-    resetFormModel('contact');
+  resetFormModel('contactState');
 
-    return <NewContact {...props}/>;
+  return <NewContact {...props}/>;
 }
 
 const mapStateToProps = (state) => ({
-    // contacts: state.contactState.contacts,
 })
 
 const mapDispatchToProps = (dispatch) => ({ 
-    addContact: bindActionCreators(a_addContact, dispatch),
-    resetFormModel: bindActionCreators(actions.reset, dispatch),
-    updateCountry: bindActionCreators(actions.change, dispatch)
+  addContact: bindActionCreators(a_addContact, dispatch),
+  resetFormModel: bindActionCreators(actions.reset, dispatch),
 });
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(NewContactContainer);
